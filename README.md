@@ -1,2 +1,3 @@
 # degree-intern
-intenr
+inten
+
