@@ -667,3 +667,11 @@ button { font: inherit; }
     height: 280px;
   }
 }
+
+/* Make room for the News & Events link on compact desktop screens. */
+@media (min-width: 861px) and (max-width: 1050px) {
+  .brand { width: 150px; }
+  .brand img { height: 49px; }
+  .nav-links { gap: 12px; }
+  .nav-links a { font-size: 12px; }
+}
