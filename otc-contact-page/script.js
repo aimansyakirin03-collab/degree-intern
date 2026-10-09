@@ -276,16 +276,6 @@ faqAccordions.forEach(function (button) {
   });
 });
 
-function getFocusableChatElements() {
-  if (!chatBox) return [];
-
-  return Array.from(
-    chatBox.querySelectorAll(
-      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
-    )
-  );
-}
-
 function openChatBox() {
   if (!chatBox || !chatToggle || !closeChat) return;
 
@@ -299,11 +289,12 @@ function openChatBox() {
 function closeChatBox() {
   if (!chatBox || !chatToggle) return;
 
+  const focusWasInsideChat = chatBox.contains(document.activeElement);
   chatBox.classList.remove("open");
   chatBox.setAttribute("aria-hidden", "true");
   chatToggle.setAttribute("aria-expanded", "false");
 
-  if (lastFocusedElement && typeof lastFocusedElement.focus === "function") {
+  if (focusWasInsideChat && lastFocusedElement && typeof lastFocusedElement.focus === "function") {
     lastFocusedElement.focus();
   }
 }
@@ -385,23 +376,4 @@ document.addEventListener("keydown", function (event) {
     if (chatBox && chatBox.classList.contains("open")) closeChatBox();
   }
 
-  if (
-    event.key === "Tab" &&
-    chatBox &&
-    chatBox.classList.contains("open")
-  ) {
-    const focusableElements = getFocusableChatElements();
-    if (!focusableElements.length) return;
-
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
-
-    if (event.shiftKey && document.activeElement === firstElement) {
-      event.preventDefault();
-      lastElement.focus();
-    } else if (!event.shiftKey && document.activeElement === lastElement) {
-      event.preventDefault();
-      firstElement.focus();
-    }
-  }
 });

@@ -1745,9 +1745,18 @@ a.info-card:hover {
     background: var(--blue-50);
   }
 
+  /* Keep the mobile contact CTA readable in every state. */
   .nav-links .nav-cta {
     justify-content: center;
     margin-top: 4px;
+    color: var(--white);
+    background: var(--blue-700);
+  }
+
+  .nav-links .nav-cta:hover,
+  .nav-links .nav-cta.active {
+    color: var(--white);
+    background: var(--navy-800);
   }
 
   .hero {

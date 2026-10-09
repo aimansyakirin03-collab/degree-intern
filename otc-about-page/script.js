@@ -65,20 +65,11 @@ document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") closeMenu();
 });
 
-const revealObserver = new IntersectionObserver(
-  function (entries, observer) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
-    });
-  },
-  { threshold: 0.12 }
-);
-
-reveals.forEach(function (element) {
-  revealObserver.observe(element);
-});
+function showStat(element) {
+  const target = Number(element.dataset.target);
+  const suffix = element.dataset.suffix || "";
+  element.textContent = `${target.toLocaleString()}${suffix}`;
+}
 
 function animateStat(element) {
   const target = Number(element.dataset.target);
@@ -87,6 +78,11 @@ function animateStat(element) {
   const startTime = performance.now();
 
   function update(now) {
+    if (prefersReducedMotion.matches) {
+      showStat(element);
+      return;
+    }
+
     const progress = Math.min((now - startTime) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
     const value = Math.floor(target * eased);
@@ -94,20 +90,56 @@ function animateStat(element) {
     if (progress < 1) requestAnimationFrame(update);
   }
 
+  if (prefersReducedMotion.matches) {
+    showStat(element);
+    return;
+  }
   requestAnimationFrame(update);
 }
 
-const statObserver = new IntersectionObserver(
-  function (entries, observer) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      animateStat(entry.target);
-      observer.unobserve(entry.target);
-    });
-  },
-  { threshold: 0.7 }
-);
+function showContentWithoutAnimation() {
+  reveals.forEach(function (element) {
+    element.classList.add("visible");
+  });
+  stats.forEach(showStat);
+}
 
-stats.forEach(function (stat) {
-  statObserver.observe(stat);
-});
+if ("IntersectionObserver" in window && !prefersReducedMotion.matches) {
+  const revealObserver = new IntersectionObserver(
+    function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  reveals.forEach(function (element) {
+    revealObserver.observe(element);
+  });
+
+  const statObserver = new IntersectionObserver(
+    function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        animateStat(entry.target);
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.7 }
+  );
+
+  stats.forEach(function (stat) {
+    statObserver.observe(stat);
+  });
+} else {
+  showContentWithoutAnimation();
+}
+
+if (typeof prefersReducedMotion.addEventListener === "function") {
+  prefersReducedMotion.addEventListener("change", function () {
+    if (prefersReducedMotion.matches) showContentWithoutAnimation();
+  });
+}
