@@ -87,3 +87,54 @@ if (backToTop) {
     window.scrollTo({ top: 0, behavior: reducedMotion.matches ? "auto" : "smooth" });
   });
 }
+
+// Native dialog supplies modal keyboard focus and Escape handling. Plain image links remain the fallback.
+const showcaseLinks = Array.from(document.querySelectorAll(".showcase-link"));
+const showcaseDialog = document.getElementById("showcaseDialog");
+const showcaseImage = document.getElementById("showcaseImage");
+const showcaseCaption = document.getElementById("showcaseDialogCaption");
+const showcasePosition = document.getElementById("showcasePosition");
+const showcaseClose = document.getElementById("showcaseClose");
+const showcasePrevious = document.getElementById("showcasePrevious");
+const showcaseNext = document.getElementById("showcaseNext");
+let showcaseIndex = 0;
+let showcaseTrigger = null;
+
+if (showcaseDialog && typeof showcaseDialog.showModal === "function" && showcaseLinks.length && showcaseImage && showcaseCaption && showcasePosition && showcaseClose && showcasePrevious && showcaseNext) {
+  function showWorkshop(index) {
+    showcaseIndex = (index + showcaseLinks.length) % showcaseLinks.length;
+    const link = showcaseLinks[showcaseIndex];
+    showcaseImage.src = link.getAttribute("href");
+    showcaseImage.alt = link.dataset.alt;
+    showcaseCaption.textContent = link.dataset.caption;
+    showcasePosition.textContent = (showcaseIndex + 1) + " of " + showcaseLinks.length;
+  }
+  showcaseLinks.forEach(function (link, index) {
+    link.addEventListener("click", function (event) {
+      event.preventDefault();
+      showcaseTrigger = link;
+      showWorkshop(index);
+      showcaseDialog.showModal();
+      document.body.classList.add("showcase-open");
+      showcaseClose.focus();
+    });
+  });
+  showcaseClose.addEventListener("click", function () { showcaseDialog.close(); });
+  showcasePrevious.addEventListener("click", function () { showWorkshop(showcaseIndex - 1); });
+  showcaseNext.addEventListener("click", function () { showWorkshop(showcaseIndex + 1); });
+  showcaseDialog.addEventListener("keydown", function (event) {
+    if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
+      event.preventDefault();
+      showWorkshop(showcaseIndex + (event.key === "ArrowRight" ? 1 : -1));
+    }
+  });
+  showcaseDialog.addEventListener("click", function (event) {
+    if (event.target !== showcaseDialog) return;
+    const bounds = showcaseDialog.getBoundingClientRect();
+    if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) showcaseDialog.close();
+  });
+  showcaseDialog.addEventListener("close", function () {
+    document.body.classList.remove("showcase-open");
+    if (showcaseTrigger) showcaseTrigger.focus();
+  });
+}

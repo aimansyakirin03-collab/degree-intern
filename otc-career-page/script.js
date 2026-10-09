@@ -61,23 +61,24 @@ document.addEventListener("click", function (event) {
 });
 
 document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") closeMenu();
+  if (event.key === "Escape") {
+    const focusInMenu = navLinks && navLinks.contains(document.activeElement);
+    closeMenu();
+    if (focusInMenu && menuToggle) menuToggle.focus();
+  }
 });
 
-const revealObserver = new IntersectionObserver(
-  function (entries, observer) {
+if ("IntersectionObserver" in window && !prefersReducedMotion.matches) {
+  const revealObserver = new IntersectionObserver(function (entries, observer) {
     entries.forEach(function (entry) {
       if (!entry.isIntersecting) return;
-      entry.target.classList.add("visible");
-      observer.unobserve(entry.target);
+      entry.target.classList.add("visible"); observer.unobserve(entry.target);
     });
-  },
-  { threshold: 0.12 }
-);
-
-reveals.forEach(function (element) {
-  revealObserver.observe(element);
-});
+  }, { threshold: 0.12 });
+  reveals.forEach(function (element) { revealObserver.observe(element); });
+} else {
+  reveals.forEach(function (element) { element.classList.add("visible"); });
+}
 
 document.querySelectorAll(".faq-item").forEach(function (item, index) {
   const button = item.querySelector(".faq-question");
@@ -93,3 +94,6 @@ document.querySelectorAll(".faq-item").forEach(function (item, index) {
     button.setAttribute("aria-expanded", String(isOpen));
   });
 });
+
+// Reset the mobile menu when returning to the desktop layout.
+window.addEventListener("resize", function () { if (window.innerWidth > 860) closeMenu(); });

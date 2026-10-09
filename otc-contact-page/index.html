@@ -14,6 +14,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
+  <link rel="stylesheet" href="../shared/site.css" />
   <link rel="stylesheet" href="style.css" />
   <script type="application/ld+json">
     {
@@ -89,35 +90,9 @@
   </header>
 
   <nav class="navbar" aria-label="Primary navigation">
-    <a class="brand" href="../otc-home-page/index.html" aria-label="OTC Training Centre home">
-      <img
-        src="../otc-about-page/assets/otc-logo.png"
-        alt="OTC Training Centre"
-        width="420"
-        height="139"
-      />
-    </a>
-
-    <button
-      class="menu-toggle"
-      id="menuToggle"
-      type="button"
-      aria-expanded="false"
-      aria-controls="navLinks"
-      aria-label="Open navigation"
-    >
-      <span></span><span></span><span></span>
-    </button>
-
-    <ul class="nav-links" id="navLinks">
-      <li><a href="../otc-home-page/index.html">Home</a></li>
-      <li><a href="../otc-about-page/index.html">About Us</a></li>
-      <li><a href="#">Programmes</a></li>
-      <li><a href="#">Gallery</a></li>
-      <li><a href="../otc-career-page/index.html">Career</a></li>
-      <li><a href="../otc-news-events-page/index.html">News &amp; Events</a></li>
-      <li><a class="nav-cta active" href="#main-content" aria-current="page">Contact Us</a></li>
-    </ul>
+    <a class="brand" href="../otc-home-page/index.html" aria-label="OTC Training Centre home"><img src="../otc-about-page/assets/otc-logo.png" alt="OTC Training Centre" width="420" height="139" /></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks"><li><a href="../otc-home-page/index.html">Home</a></li><li><a href="../otc-about-page/index.html">About Us</a></li><li><a href="../otc-programmes-page/index.html">Programmes</a></li><li><a href="../otc-gallery-page/index.html">Gallery</a></li><li><a href="../otc-career-page/index.html">Career</a></li><li><a href="../otc-news-events-page/index.html">News &amp; Events</a></li><li><a class="nav-cta active" href="../otc-contact-page/index.html" aria-current="page">Contact Us</a></li></ul>
   </nav>
 
   <main id="main-content">
@@ -167,7 +142,7 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span class="option-icon option-icon-green" aria-hidden="true">WA</span>
+              <span class="option-icon option-icon-green" aria-hidden="true"><svg class="whatsapp-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7a8.5 8.5 0 1 1 16.2-4.1Z" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.1 6.9c.3-.2.7-.1.8.2l1.1 2.2c.1.3.1.5-.1.7l-.8.9c.6 1.2 1.7 2.3 3 2.9l.8-.9c.2-.2.5-.3.7-.1l2.2 1.1c.3.1.4.5.2.8-.6 1.4-1.7 1.8-3.1 1.4-3.2-.9-5.9-3.7-6.6-6.3-.4-1.3.2-2.3 1.8-2.9Z" fill="currentColor"/></svg></span>
               <span><strong>WhatsApp our team</strong><small>Best for a quick response</small></span>
               <b aria-hidden="true">&rarr;</b>
             </a>
@@ -315,6 +290,7 @@
               <small class="field-error" id="companyError"></small>
             </div>
 
+            <div class="form-group full-width"><label for="courseTitle">Selected course or learning area <span>(optional)</span></label><input type="text" id="courseTitle" name="courseTitle" maxlength="180" placeholder="Enter a course or topic" aria-describedby="coursePrefillNotice" /><small id="coursePrefillNotice" role="status" aria-live="polite" hidden></small></div>
             <div class="form-group">
               <label for="programme">Programme interest <span aria-hidden="true">*</span></label>
               <select
@@ -381,7 +357,8 @@
             </div>
           </div>
 
-          <button type="submit" class="submit-button" id="submitButton">
+          <p class="enquiry-handoff" id="enquiryHandoff">Next, review your enquiry in WhatsApp and press Send. You can edit your details here before continuing.</p>
+          <button type="submit" class="submit-button" id="submitButton" aria-describedby="enquiryHandoff">
             Continue with Proposal on WhatsApp
             <span aria-hidden="true">&rarr;</span>
           </button>
@@ -470,50 +447,7 @@
       </div>
     </section>
 
-    <section class="accreditations section">
-      <div class="section-shell accreditation-grid">
-        <div class="accreditation-copy reveal">
-          <span class="eyebrow eyebrow-light">Trusted &amp; accredited</span>
-          <h2>Confidence behind every conversation.</h2>
-          <p>
-            OTC works within Malaysia&rsquo;s recognised training, technical,
-            safety and professional development ecosystem.
-          </p>
-          <a class="text-link-light" href="../otc-about-page/index.html">
-            Learn more about OTC <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-
-        <div class="accreditation-list reveal" aria-label="OTC accreditations and registrations">
-          <article>
-            <img src="../otc-about-page/assets/accreditation-2.jpeg" alt="HRD Corp" loading="lazy" />
-            <span><strong>HRD Corp</strong><small>Registered training provider</small></span>
-          </article>
-          <article>
-            <img src="../otc-about-page/assets/accreditation-1.png" alt="Malaysia Board of Technologists" loading="lazy" />
-            <span><strong>MBOT</strong><small>Professional development partner</small></span>
-          </article>
-          <article>
-            <img src="../otc-about-page/assets/accreditation-mof.jpg" alt="Ministry of Finance Malaysia" loading="lazy" />
-            <span><strong>MOF</strong><small>Registered organisation</small></span>
-          </article>
-          <article>
-            <img src="../otc-about-page/assets/accreditation-eimas.svg" alt="Environment Institute of Malaysia" loading="lazy" />
-            <span><strong>EiMAS</strong><small>Environmental training ecosystem</small></span>
-          </article>
-          <article>
-            <img src="../otc-about-page/assets/accreditation-4.png" alt="Energy Commission Malaysia" loading="lazy" />
-            <span><strong>Energy Commission</strong><small>Technical training recognition</small></span>
-          </article>
-          <article>
-            <img src="../otc-about-page/assets/accreditation-5.jpeg" alt="Department of Occupational Safety and Health Malaysia" loading="lazy" />
-            <span><strong>DOSH</strong><small>Safety training ecosystem</small></span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq-section section" id="faq">
+<section class="faq-section section" id="faq">
       <div class="section-shell faq-shell">
         <div class="section-heading reveal">
           <span class="eyebrow">Questions, answered</span>
@@ -657,46 +591,11 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-main">
-      <div class="footer-brand">
-        <img
-          src="../otc-about-page/assets/otc-logo.png"
-          alt="OTC Training Centre"
-          width="420"
-          height="139"
-        />
-        <p>
-          Practical, industry-relevant training for stronger teams and more
-          competitive organisations.
-        </p>
-      </div>
-      <div class="footer-column">
-        <h3>Explore</h3>
-        <a href="../otc-home-page/index.html">Home</a>
-        <a href="../otc-about-page/index.html">About Us</a>
-        <a href="#">Programmes</a>
-        <a href="../otc-career-page/index.html">Career</a>
-        <a href="../otc-news-events-page/index.html">News &amp; Events</a>
-      </div>
-      <div class="footer-column">
-        <h3>Contact</h3>
-        <a href="tel:+60125882263">+6012-588 2263</a>
-        <a href="mailto:info@otc.com.my">info@otc.com.my</a>
-        <p>Mon&ndash;Fri, 8:30 AM&ndash;5:30 PM</p>
-      </div>
-      <div class="footer-column">
-        <h3>Our Offices</h3>
-        <a href="#offices">Selangor</a>
-        <a href="#offices">Penang</a>
-        <a href="#offices">Johor Bahru</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; <span id="currentYear"></span> OTC Training Centre Sdn Bhd. All rights reserved.</p>
-      <p>201301028491 (1058321-W)</p>
-    </div>
-  </footer>
+  <footer class="footer"><div class="footer-main"><div class="footer-brand"><img src="../otc-about-page/assets/otc-logo.png" alt="OTC Training Centre" width="420" height="139" /><p>Practical, industry-relevant training for stronger teams and more competitive organisations.</p></div>
+    <div class="footer-column"><h3>Explore</h3><a href="../otc-home-page/index.html">Home</a><a href="../otc-about-page/index.html">About Us</a><a href="../otc-programmes-page/index.html">Programmes</a><a href="../otc-gallery-page/index.html">Gallery</a><a href="../otc-career-page/index.html">Career</a><a href="../otc-news-events-page/index.html">News &amp; Events</a><a href="../otc-contact-page/index.html">Contact Us</a></div>
+    <div class="footer-column"><h3>Contact</h3><a href="tel:+60125882263">+6012-588 2263</a><a href="mailto:info@otc.com.my">info@otc.com.my</a><p>Mon–Fri, 8:30 AM–5:30 PM</p></div>
+    <div class="footer-column"><h3>Our Offices</h3><a href="../otc-contact-page/index.html#offices">Selangor</a><a href="../otc-contact-page/index.html#offices">Penang</a><a href="../otc-contact-page/index.html#offices">Johor Bahru</a></div>
+  </div><div class="footer-bottom"><p>&copy; <span id="currentYear">2026</span> OTC Training Centre Sdn Bhd. All rights reserved.</p><p>201301028491 (1058321-W)</p></div></footer>
 
   <button
     class="back-to-top"
@@ -729,7 +628,7 @@
       rel="noopener noreferrer"
       aria-label="Chat with OTC Training Centre on WhatsApp"
     >
-      <span class="tool-icon" aria-hidden="true">WA</span>
+      <span class="tool-icon" aria-hidden="true"><svg class="whatsapp-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7a8.5 8.5 0 1 1 16.2-4.1Z" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.1 6.9c.3-.2.7-.1.8.2l1.1 2.2c.1.3.1.5-.1.7l-.8.9c.6 1.2 1.7 2.3 3 2.9l.8-.9c.2-.2.5-.3.7-.1l2.2 1.1c.3.1.4.5.2.8-.6 1.4-1.7 1.8-3.1 1.4-3.2-.9-5.9-3.7-6.6-6.3-.4-1.3.2-2.3 1.8-2.9Z" fill="currentColor"/></svg></span>
       <strong>WhatsApp</strong>
     </a>
   </div>
@@ -821,6 +720,7 @@
     </div>
   </aside>
 
+  <script src="../shared/training-topics.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

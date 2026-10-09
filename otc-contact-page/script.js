@@ -95,6 +95,19 @@ if ("IntersectionObserver" in window && !prefersReducedMotion.matches) {
   });
 }
 
+const selectedTrainingKey = new URLSearchParams(window.location.search).get("training");
+const selectedTraining = window.otcTrainingTopics && Object.prototype.hasOwnProperty.call(window.otcTrainingTopics, selectedTrainingKey) ? window.otcTrainingTopics[selectedTrainingKey] : null;
+const courseTitleField = document.getElementById("courseTitle");
+const prefillNotice = document.getElementById("coursePrefillNotice");
+if (selectedTraining && courseTitleField && !courseTitleField.value) {
+  courseTitleField.value = selectedTraining.title;
+  const programmeField = document.getElementById("programme");
+  const deliveryField = document.getElementById("trainingMode");
+  if (programmeField && !programmeField.value) programmeField.value = selectedTraining.area;
+  if (deliveryField && !deliveryField.value) deliveryField.value = selectedTraining.mode;
+  if (prefillNotice) { prefillNotice.hidden = false; prefillNotice.textContent = "Selected from Programmes. Review or edit the course and training format before sending."; }
+}
+
 const validationRules = {
   name: function (value) {
     if (!value.trim()) return "Please enter your name.";
@@ -210,6 +223,7 @@ if (contactForm && submitButton && formMessage) {
       `Phone: ${formData.get("phone")}`,
       `Company: ${formData.get("company")}`,
       `Programme interest: ${formData.get("programme")}`,
+      `Selected course or learning area: ${String(formData.get("courseTitle") || "").trim() || "Not specified"}`,
       `Estimated participants: ${formData.get("participants")}`,
       `Preferred training method: ${formData.get("trainingMode")}`,
       "",
@@ -372,8 +386,13 @@ chatQuestions.forEach(function (button) {
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
+    const focusInMenu = navLinks && navLinks.contains(document.activeElement);
     closeMenu();
+    if (focusInMenu && menuToggle) menuToggle.focus();
     if (chatBox && chatBox.classList.contains("open")) closeChatBox();
   }
 
 });
+
+// Reset the mobile menu when returning to the desktop layout.
+window.addEventListener("resize", function () { if (window.innerWidth > 860) closeMenu(); });

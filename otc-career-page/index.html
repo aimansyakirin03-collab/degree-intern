@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../shared/site.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -22,23 +23,9 @@
   </header>
 
   <nav class="navbar" aria-label="Primary navigation">
-    <a class="brand" href="../otc-home-page/index.html" aria-label="OTC Training Centre home">
-      <img src="../otc-about-page/assets/otc-logo.png" alt="OTC Training Centre" />
-    </a>
-
-    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation">
-      <span></span><span></span><span></span>
-    </button>
-
-    <ul class="nav-links" id="navLinks">
-      <li><a href="../otc-home-page/index.html">Home</a></li>
-      <li><a href="../otc-about-page/index.html">About Us</a></li>
-      <li><a href="#">Programmes</a></li>
-      <li><a href="#">Gallery</a></li>
-      <li><a class="active" href="#main-content" aria-current="page">Career</a></li>
-      <li><a href="../otc-news-events-page/index.html">News &amp; Events</a></li>
-      <li><a class="nav-cta" href="../otc-contact-page/index.html">Contact Us</a></li>
-    </ul>
+    <a class="brand" href="../otc-home-page/index.html" aria-label="OTC Training Centre home"><img src="../otc-about-page/assets/otc-logo.png" alt="OTC Training Centre" width="420" height="139" /></a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks"><li><a href="../otc-home-page/index.html">Home</a></li><li><a href="../otc-about-page/index.html">About Us</a></li><li><a href="../otc-programmes-page/index.html">Programmes</a></li><li><a href="../otc-gallery-page/index.html">Gallery</a></li><li><a class="active" href="../otc-career-page/index.html" aria-current="page">Career</a></li><li><a href="../otc-news-events-page/index.html">News &amp; Events</a></li><li><a class="nav-cta" href="../otc-contact-page/index.html">Contact Us</a></li></ul>
   </nav>
 
   <main id="main-content">
@@ -319,24 +306,14 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-main">
-      <div class="footer-brand">
-        <img src="../otc-about-page/assets/otc-logo.png" alt="OTC Training Centre" />
-        <p>Practical, industry-relevant training for stronger teams and more competitive organisations.</p>
-      </div>
-      <div class="footer-column"><h3>Explore</h3><a href="../otc-home-page/index.html">Home</a><a href="../otc-about-page/index.html">About Us</a><a href="#">Programmes</a><a href="#main-content">Career</a><a href="../otc-news-events-page/index.html">News &amp; Events</a></div>
-      <div class="footer-column"><h3>Contact</h3><a href="tel:+60125882263">+6012-588 2263</a><a href="mailto:info@otc.com.my">info@otc.com.my</a><p>Mon-Fri, 8:30 AM-5:30 PM</p></div>
-      <div class="footer-column"><h3>Our Offices</h3><p>Selangor</p><p>Penang</p><p>Johor Bahru</p></div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; <span id="currentYear"></span> OTC Training Centre Sdn Bhd. All rights reserved.</p>
-      <p>201301028491 (1058321-W)</p>
-    </div>
-  </footer>
+  <footer class="footer"><div class="footer-main"><div class="footer-brand"><img src="../otc-about-page/assets/otc-logo.png" alt="OTC Training Centre" width="420" height="139" /><p>Practical, industry-relevant training for stronger teams and more competitive organisations.</p></div>
+    <div class="footer-column"><h3>Explore</h3><a href="../otc-home-page/index.html">Home</a><a href="../otc-about-page/index.html">About Us</a><a href="../otc-programmes-page/index.html">Programmes</a><a href="../otc-gallery-page/index.html">Gallery</a><a href="../otc-career-page/index.html">Career</a><a href="../otc-news-events-page/index.html">News &amp; Events</a><a href="../otc-contact-page/index.html">Contact Us</a></div>
+    <div class="footer-column"><h3>Contact</h3><a href="tel:+60125882263">+6012-588 2263</a><a href="mailto:info@otc.com.my">info@otc.com.my</a><p>Mon–Fri, 8:30 AM–5:30 PM</p></div>
+    <div class="footer-column"><h3>Our Offices</h3><a href="../otc-contact-page/index.html#offices">Selangor</a><a href="../otc-contact-page/index.html#offices">Penang</a><a href="../otc-contact-page/index.html#offices">Johor Bahru</a></div>
+  </div><div class="footer-bottom"><p>&copy; <span id="currentYear">2026</span> OTC Training Centre Sdn Bhd. All rights reserved.</p><p>201301028491 (1058321-W)</p></div></footer>
 
   <a class="floating-whatsapp" href="https://wa.me/60125882263?text=Hi%20OTC%2C%20I%20would%20like%20to%20ask%20about%20career%20opportunities." target="_blank" rel="noopener noreferrer" aria-label="Chat with OTC Training Centre on WhatsApp">
-    <span aria-hidden="true">WA</span>
+    <span aria-hidden="true"><svg class="whatsapp-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.5L3 20.5l1.3-4.7a8.5 8.5 0 1 1 16.2-4.1Z" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.1 6.9c.3-.2.7-.1.8.2l1.1 2.2c.1.3.1.5-.1.7l-.8.9c.6 1.2 1.7 2.3 3 2.9l.8-.9c.2-.2.5-.3.7-.1l2.2 1.1c.3.1.4.5.2.8-.6 1.4-1.7 1.8-3.1 1.4-3.2-.9-5.9-3.7-6.6-6.3-.4-1.3.2-2.3 1.8-2.9Z" fill="currentColor"/></svg></span>
     <strong>Chat with us</strong>
   </a>
 

@@ -1,0 +1,25 @@
+.course-hero { padding: 64px 20px; color: var(--white); background: linear-gradient(125deg,var(--navy-950),#075d9b); }
+.course-back { display: block; margin-bottom: 30px; color: #bbddef; font-size: 13px; text-decoration: none; }
+.course-hero h1 { max-width: 900px; font-size: clamp(35px,4.5vw,60px); line-height: 1.12; letter-spacing: -.045em; }
+.course-hero p { max-width: 720px; margin: 24px 0 28px; color: #d0e2ef; font-size: 16px; line-height: 1.85; }
+.course-layout { display: grid; grid-template-columns: 1fr 360px; gap: 45px; align-items: start; }
+.course-body section { margin-bottom: 25px; padding: 30px; background: var(--white); border: 1px solid var(--line); border-radius: 20px; }
+.course-body h2 { margin-bottom: 20px; font-size: 29px; letter-spacing: -.03em; }
+.course-body p,.course-body li { color: var(--muted); font-size: 15px; line-height: 1.9; }
+.course-body ul { display: grid; gap: 10px; padding-left: 22px; }
+.course-source { padding-top: 25px; border-top: 1px solid var(--line); font-size: 12px !important; }
+.course-source a { color: var(--blue-700); }
+.course-facts { position: sticky; top: 110px; display: grid; gap: 22px; padding: 28px; border: 1px solid var(--line); border-radius: 22px; background: var(--white); box-shadow: var(--shadow-sm); }
+.course-facts h2 { font-size: 22px; }
+.course-facts dl { display: grid; gap: 18px; }
+.course-facts dt { margin-bottom: 5px; font-size: 11px; font-weight: 700; color: #43536c; }
+.course-facts dd { font-size: 14px; line-height: 1.7; color: var(--muted); }
+.course-status { padding: 14px; border-radius: 12px; background: var(--blue-50); color: #43536c; font-size: 12px; line-height: 1.8; }
+@media (max-width: 860px) { .course-layout { grid-template-columns: 1fr; gap: 35px; } .course-facts { position: static; } }
+@media (max-width: 590px) { .course-hero { padding: 45px 18px; } .course-facts { padding: 24px; } }
+
+@media (max-width: 590px) { .course-body section { padding: 24px; } }
+
+.course-enquiry-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.team-enquiry-note { color: var(--muted); font-size: 12px; line-height: 1.8; }
+@media (max-width: 590px) { .course-enquiry-actions { display: grid; } }

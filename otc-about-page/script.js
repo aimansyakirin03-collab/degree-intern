@@ -62,7 +62,11 @@ document.addEventListener("click", function (event) {
 });
 
 document.addEventListener("keydown", function (event) {
-  if (event.key === "Escape") closeMenu();
+  if (event.key === "Escape") {
+    const focusInMenu = navLinks && navLinks.contains(document.activeElement);
+    closeMenu();
+    if (focusInMenu && menuToggle) menuToggle.focus();
+  }
 });
 
 function showStat(element) {
@@ -143,3 +147,6 @@ if (typeof prefersReducedMotion.addEventListener === "function") {
     if (prefersReducedMotion.matches) showContentWithoutAnimation();
   });
 }
+
+// Reset the mobile menu when returning to the desktop layout.
+window.addEventListener("resize", function () { if (window.innerWidth > 860) closeMenu(); });
